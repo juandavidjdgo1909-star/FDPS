@@ -1,0 +1,327 @@
+/* Variables de color para el tema */
+:root {
+    --bg-color: #f4f7f6;
+    --bg-gradient: linear-gradient(to bottom, #a3c9f0, #ffffff);
+    --text-color: rgba(51, 51, 51, 1);
+    --header-bg: #0056b3;
+    --header-text: white;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --section-bg: white;
+    --section-shadow: rgba(0,0,0,0.1);
+    --excusa-item-bg: #f9f9f9;
+    --excusa-item-border: #e0e0e0;
+    --heading-color: #0056b3;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --bg-gradient: linear-gradient(to bottom, #1e3c72, #0a192f);
+    --text-color: #f1f1f1;
+    --header-bg: #004080;
+    --header-text: #f1f1f1;
+    --button-bg: #0066cc;
+    --button-hover-bg: #0052a3;
+    --section-bg: #2c2c2c;
+    --section-shadow: rgba(0,0,0,0.4);
+    --excusa-item-bg: #3a3a3a;
+    --excusa-item-border: #555;
+    --heading-color: #4da6ff;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+header h2 {
+    margin: 0;
+    color: var(--header-text);
+}
+
+header nav button {
+    background-color: var(--button-bg);
+    color: var(--header-text);
+    border: none;
+    padding: 10px 15px;
+    margin-left: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+header nav button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    display: none;
+    background-color: var(--section-bg);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--section-shadow);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: background-color 0.3s ease;
+}
+
+section.activa {
+    display: block;
+}
+
+
+.tipos {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tipos > div {
+    background-color: var(--button-bg);
+    color: var(--header-text);
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tipos > div:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+h2 {
+    color: var(--heading-color);
+    border-bottom: 2px solid var(--excusa-item-border);
+    padding-bottom: 10px;
+    margin-top: 0;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para los contenedores de excusas */
+#activas-container, #vencidas-container, #pendientes-container, #rechazadas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.excusa-item {
+    border: 1px solid var(--excusa-item-border);
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--excusa-item-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.excusa-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+.excusa-item h4 {
+    margin-top: 0;
+    color: var(--heading-color);
+    transition: color 0.3s ease;
+}
+
+
+/* Estilos para los estados de las excusas */
+.excusa-item p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.excusa-item .status-en-espera {
+    background-color: #f0ad4e; /* Naranja */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.excusa-item .status-aceptada {
+    background-color: #5cb85c; /* Verde */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.excusa-item .status-denegada {
+    background-color: #d9534f; /* Rojo */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Estilos para el formulario */
+.botones-formulario button {
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+}
+
+#formulario-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--section-bg);
+    border: 1px solid var(--excusa-item-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--section-shadow);
+}
+
+#formulario-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+#formulario-container label {
+    font-weight: bold;
+}
+
+#formulario-container input,
+#formulario-container select,
+#formulario-container textarea {
+    padding: 10px;
+    border: 1px solid var(--excusa-item-border);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+
+#formulario-container canvas {
+    border: 1px solid var(--excusa-item-border);
+    border-radius: 4px;
+    cursor: crosshair;
+    touch-action: none;
+    transition: border-color 0.3s ease;
+}
+
+#formulario-container .botones-accion button {
+    width: auto;
+    padding: 10px 20px;
+}
+
+/* Estilos para el interruptor de tema */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.slider .icon {
+    font-size: 18px;
+    line-height: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--button-bg);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
