@@ -1,0 +1,401 @@
+*{
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Variables de color para el tema */
+:root {
+    --bg-color: #f4f7f6;
+    --bg-gradient: linear-gradient(to bottom, #a3c9f0, #ffffff);
+    --text-color: #333;
+    --header-bg: #0056b3;
+    --header-text: white;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --section-bg: white;
+    --section-shadow: rgba(0,0,0,0.1);
+    --grid-item-bg: #007bff;
+    --grid-item-hover-bg: #0056b3;
+    --excusa-item-bg: #f9f9f9;
+    --excusa-item-border: #e0e0e0;
+    --heading-color: #0056b3;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --bg-gradient: linear-gradient(to bottom, #1e3c72, #0a192f);
+    --text-color: #f1f1f1;
+    --header-bg: #004080;
+    --header-text: #f1f1f1;
+    --button-bg: #0066cc;
+    --button-hover-bg: #0052a3;
+    --section-bg: #2c2c2c;
+    --section-shadow: rgba(0,0,0,0.4);
+    --grid-item-bg: #0066cc;
+    --grid-item-hover-bg: #0052a3;
+    --excusa-item-bg: #3a3a3a;
+    --excusa-item-border: #555;
+    --heading-color: #4da6ff;
+}
+
+body{
+  margin:0;
+  background:var(--bg-gradient);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+header{
+  background:var(--header-bg);
+  color:var(--header-text);
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+header h2 {
+    color: var(--header-text);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav button {
+    background-color: var(--button-bg);
+    color: var(--header-text);
+    border: none;
+    padding: 10px 15px;
+    margin-left: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+main{
+  padding:20px;
+}
+
+section{
+    background-color: var(--section-bg);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--section-shadow);
+    animation: fadeIn 0.5s ease-in-out;
+    transition: background-color 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+/* Estilos para la cuadrícula de grados */
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.grid-item{
+    background-color: var(--grid-item-bg);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover{
+    background-color: var(--grid-item-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la vista de excusas del docente */
+#vista-excusas button{
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#vista-excusas button:hover {
+    background-color: #5a6268;
+}
+
+.excusas-list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.excusa-item-docente, .excusa-item {
+    border: 1px solid var(--excusa-item-border);
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--excusa-item-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.excusa-item-docente:hover, .excusa-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.excusa-item-docente h4, .excusa-item h4 {
+    margin-top: 0;
+    color: var(--heading-color);
+    transition: color 0.3s ease;
+}
+
+/* Estilos para los botones de acción del coordinador */
+.acciones {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.acciones button {
+    flex-grow: 1;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.acciones button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.acciones button:first-child {
+    background-color: #28a745; /* Verde para Aceptar */
+}
+
+.acciones button:last-child {
+    background-color: #dc3545; /* Rojo para Denegar */
+}
+
+/* Estilos para el interruptor de tema */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 20px;
+    position: relative;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.slider .icon {
+    font-size: 18px;
+    line-height: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--button-bg);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Modo oscuro para el switch */
+body.dark-mode .theme-switch-wrapper {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive para el switch */
+@media (max-width: 768px) {
+    .theme-switch-wrapper {
+        margin-right: 10px;
+        padding: 6px;
+    }
+    
+    header {
+        padding: 10px 15px;
+    }
+}
+
+form{
+  background:white;
+  margin-top:30px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+
+form input, form select, form textarea{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+canvas{
+  border:2px dashed #2a5298;
+  width:100%;
+  height:150px;
+}
+
+form button{
+  background:#2a5298;
+  color:white;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  font-size:16px;
+}
+
+/* Estilos para la ventana modal */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeInModal 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--section-bg);
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slideInModal 0.4s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+#modal-body h4 {
+    color: var(--heading-color);
+    margin-top: 0;
+    border-bottom: 1px solid var(--excusa-item-border);
+    padding-bottom: 10px;
+}
+
+#modal-body p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+#modal-body img {
+    max-width: 100%;
+    border: 1px solid var(--excusa-item-border);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInModal {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
