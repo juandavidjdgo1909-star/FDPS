@@ -1,0 +1,271 @@
+:root {
+  --primary-color: rgb(42, 82, 152);
+  --primary-dark-color: rgb(30, 60, 114);
+  --bg-color: rgb(240, 244, 248);
+  --bg-gradient: linear-gradient(to bottom, #ffffff, #a3c9f0);
+  --card-bg-color: white;
+  --text-color: rgb(51, 51, 51);
+  --text-on-primary-color: rgb(255, 255, 255);
+  --input-bg-color: rgb(240, 244, 248);
+  --input-border-color: rgb(204, 204, 204);
+  --shadow-color: rgba(0,0,0,.2);
+  --focus-shadow-color: rgba(42, 82, 152, 0.2);
+}
+
+body.dark-mode {
+  --bg-color: rgb(18, 18, 18);
+  --bg-gradient: linear-gradient(to bottom, #1e3c72, #0a192f);
+  --card-bg-color: rgb(30, 30, 30);
+  --text-color: rgb(241, 241, 241);
+  --input-bg-color: rgb(51, 51, 51);
+  --input-border-color: rgb(85, 85, 85);
+  --shadow-color: rgba(0,0,0,.4);
+  --focus-shadow-color: rgba(42, 82, 152, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-dark-color), var(--primary-color));
+  clip-path: circle(60% at right 20%);
+  z-index: -1;
+}
+
+.card {
+  width: 900px;
+  height: 500px;
+  background: var(--card-bg-color);
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  transition: background-color 0.3s ease;
+}
+
+.left {
+  width: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark-color));
+  color: var(--text-on-primary-color);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.left p {
+  font-size: 16px;
+  opacity: .9;
+}
+
+.right {
+  width: 50%;
+  padding: 50px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.form {
+  display: none;
+  animation: fade .4s ease;
+}
+
+.form.active {
+  display: block;
+}
+
+.form input, .form select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%23555%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#permissionPassword {
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+#permissionPassword[style*="block"] {
+    max-height: 100px; /* Ajusta según la altura del campo */
+    opacity: 1;
+    margin-bottom: 15px;
+}
+.form input:focus, .form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-color);
+  border: none;
+  color: var(--text-on-primary-color);
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: var(--primary-dark-color);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .card {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+  .left, .right {
+    width: 100%;
+  }
+}
+
+/* Estilos para el interruptor de tema */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(204, 204, 204);
+    transition: .4s;
+    border-radius: 28px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+.school-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+.school-logo img {
+  width: 160px;
+  height: auto;
+}
+.left {
+  width: 50%;
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.left {
+  width: 50%;
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
