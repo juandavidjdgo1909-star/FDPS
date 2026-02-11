@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel del Acudiente</title>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <h2>Panel del Docente</h2>
+        <nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle-button">
+                    <input type="checkbox" id="theme-toggle-button" />
+                    <span class="slider">
+                        <span class="icon sun">☀️</span>
+                        <span class="icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+            <button onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Vista de la lista de grados -->
+        <section id="vista-grados">
+            <h2>Selecciona un Grado</h2>
+            <div id="lista-grados" class="grid-container">
+                <!-- Los grados se generarán aquí con JS -->
+            </div>
+        </section>
+
+        <!-- Vista de las excusas de un grado específico (oculta por defecto) -->
+        <section id="vista-excusas" class="hidden">
+            <button onclick="volverAListaDeGrados()">⬅️ Volver a la lista de grados</button>
+            <h2 id="titulo-grado-seleccionado"></h2>
+            
+            <h3>Excusas Activas</h3>
+            <div id="excusas-activas-container" class="excusas-list"></div>
+
+            <h3>Excusas Vencidas</h3>
+            <div id="excusas-vencidas-container" class="excusas-list"></div>
+        </section>
+    </main>
+
+    <script src="dashboard.js"></script>
+    <script src="theme-switcher.js"></script>
+</body>
+</html>
