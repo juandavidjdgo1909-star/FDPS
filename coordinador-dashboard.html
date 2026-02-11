@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Coordinador</title>
+    <link rel="stylesheet" href="dashboard.css"> <!-- Reutilizaremos los estilos del dashboard de docente por ahora -->
+</head>
+<body>
+    <header>
+        <h2>Panel de Coordinación</h2>
+        <nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle-button">
+                    <input type="checkbox" id="theme-toggle-button" />
+                    <span class="slider">
+                        <span class="icon sun">☀️</span>
+                        <span class="icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+            <button onclick="mostrar('pendientes')">⏳ Pendientes</button>
+            <button onclick="mostrar('aceptadas')">✅ Aceptadas</button>
+            <button onclick="mostrar('denegadas')">❌ Denegadas</button>
+            <button onclick="mostrar('vencidas')">⏰ Vencidas</button>
+            <button onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="pendientes-excusas">
+            <h2>Excusas Pendientes de Revisión</h2>
+            <div id="pendientes-container"></div>
+        </section>
+
+        <section id="aceptadas-excusas" class="hidden">
+            <h2>Excusas Aceptadas</h2>
+            <div id="aceptadas-container"></div>
+        </section>
+
+        <section id="denegadas-excusas" class="hidden">
+            <h2>Excusas Denegadas</h2>
+            <div id="denegadas-container"></div>
+        </section>
+
+        <section id="vencidas-excusas" class="hidden">
+            <h2>Excusas Vencidas</h2>
+            <div id="vencidas-container"></div>
+        </section>
+    </main>
+
+    <!-- Ventana Modal para detalles de la excusa -->
+    <div id="modal-detalles" class="modal-background" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close" onclick="cerrarModal()">&times;</span>
+            <h2>Detalles de la Excusa</h2>
+            <div id="modal-body">
+                <!-- El contenido se inyectará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script src="coordinador-dashboard.js"></script>
+    <script src="theme-switcher.js"></script>
+</body>
+</html>
