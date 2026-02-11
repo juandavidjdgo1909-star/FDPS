@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel del Acudiente</title>
+<link rel="stylesheet" href="acudiente-dashboard.css">
+</head>
+<body>
+    <header>
+        <h2>Panel del Acudiente</h2>
+        <nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle-button">
+                    <input type="checkbox" id="theme-toggle-button" />
+                    <span class="slider">
+                        <span class="icon sun">☀️</span>
+                        <span class="icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+            <button onclick="mostrar('crear')">➕ Crear excusa</button>
+            <button onclick="mostrar('pendientes')">⏳ Excusas pendientes</button>
+            <button onclick="mostrar('activas')">📄 Excusas aceptadas</button>
+            <button onclick="mostrar('vencidas')">⏰ Excusas vencidas</button>
+            <button onclick="mostrar('rechazadas')">❌ Excusas rechazadas</button>
+            <button onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+        </nav>
+    </header>
+
+<main>
+  <section id="crear" class="seccion activa">
+    <h3>Crear Excusa</h3>
+    <div class="tipos">
+      <div onclick="abrirFormulario('medica')">🩺 Excusa Médica</div>
+      <div onclick="abrirFormulario('salida')">🚪 Permiso de Salida</div>
+      <div onclick="abrirFormulario('incapacidad')">📎 Incapacidad</div>
+      <div onclick="abrirFormulario('inasistencia')">❌ Permiso de Inasistencia</div>
+    </div>
+    <div id="formulario-container">
+      <div id="formulario"></div>
+    </div>
+  </section>
+
+  <section id="pendientes" class="seccion">
+    <h3>Excusas pendientes</h3>
+  </section>
+
+  <section id="activas" class="seccion">
+    <h3>Excusas aceptadas</h3>
+  </section>
+
+  <section id="vencidas" class="seccion">
+    <h3>Excusas vencidas</h3>
+  </section>
+
+  <section id="rechazadas" class="seccion">
+    <h3>Excusas rechazadas</h3>
+  </section>
+</main>
+
+<script src="acudiente-dashboard.js"></script>
+    <script src="theme-switcher.js"></script>
+</body>
+</html>
