@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Colegio FDPS | Excusas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="school-logo">
+    <img src="escudo.png" alt="Escudo Colegio FDPS">
+  </div>
+  <div class="background"></div>
+  <div class="card">
+    <div class="left">
+      <h1>Colegio FDPS</h1>
+      <p>Creación de excusas medicas temporales por inasistencia.</p>
+    </div>
+    <div class="right">
+      <div class="tabs">
+        <button id="btnLogin" class="active">Iniciar sesión</button>
+        <button id="btnRegister">Registrarse</button>
+      </div>
+      <form id="login" class="form active">
+        <input type="email" id="loginCorreo" placeholder="Correo Electronico" required>
+        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        <button>Entrar</button>
+      </form>
+<form id="register" class="form">
+  <input type="text" id="regNombre" placeholder="Nombre completo" required>
+  <input type="email" id="regCorreo" placeholder="Correo" required>
+  <input type="password" id="regPassword" placeholder="Contraseña" required>
+  <select id="roleSelector" required>
+    <option value="" disabled selected>Selecciona tu rol</option>
+    <option value="padre">Padre de familia</option>
+    <option value="docente">Docente</option>
+    <option value="coordinador">Coordinador</option>
+  </select>
+  <input type="password" id="permissionPassword"
+         placeholder="Contraseña de Permiso"
+         style="display: none;">
+  <button type="submit">Crear cuenta</button>
+</form>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script src="theme-switcher.js"></script>
+</body>
+</html>
